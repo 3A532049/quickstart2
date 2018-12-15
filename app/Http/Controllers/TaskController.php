@@ -24,9 +24,13 @@ class TaskController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function index(Request $request) //index 方法回傳此視圖
+    public function index(Request $request)
     {
-        return view('tasks.index');
+        $tasks = Task::where('user_id', $request->user()->id)->get();
+
+        return view('tasks.index', [  //傳遞所有已有的任務至視圖
+            'tasks' => $tasks,
+        ]);
     }
 
     /**
