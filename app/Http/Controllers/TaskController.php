@@ -43,21 +43,6 @@ class TaskController extends Controller
     }
 
     /**
-     * 顯示使用者所有任務的清單。
-     *
-     * @param  Request  $request
-     * @return Response
-     */
-    public function index(Request $request)
-    {
-        $tasks = Task::where('user_id', $request->user()->id)->get();
-
-        return view('tasks.index', [  //傳遞所有已有的任務至視圖
-            'tasks' => $tasks,
-        ]);
-    }
-
-    /**
      * 建立新的任務。
      *
      * @param  Request  $request
